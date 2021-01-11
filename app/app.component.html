@@ -1,0 +1,16 @@
+<dx-data-grid id="gridContainer" [dataSource]="employees" [allowColumnReordering]="true" [allowColumnResizing]="true" [columnAutoWidth]="true">
+	<dxo-editing mode="row" [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true">
+	</dxo-editing>
+	<dxi-column dataField="countryId" [setCellValue]="setTypeValue" caption="Country">
+		<dxo-lookup [dataSource]="countries" displayExpr="name" valueExpr="id">
+		</dxo-lookup>
+	</dxi-column>
+	<dxi-column dataField="stateId" calculateDisplayValue="stateName" [setCellValue]="setSubtTypeValue" caption="State">
+		<dxo-lookup [dataSource]="getFilteredStates" valueExpr="id" displayExpr="name">
+		</dxo-lookup>
+	</dxi-column>
+	<dxi-column dataField="cityId" calculateDisplayValue="cityName" caption="City">
+		<dxo-lookup [dataSource]="getFilteredCities" valueExpr="id" displayExpr="name">
+		</dxo-lookup>
+	</dxi-column>
+</dx-data-grid>
